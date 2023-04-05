@@ -3,6 +3,27 @@ import requests
 import tomllib
 from dataclasses import dataclass
 
+def create_parser():
+    parser = argparse.ArgumentParser(
+      prog="kimai API client",
+      description="makes API calls to the Kimai API",
+    )
+
+    parser.add_argument(
+        '--config',
+        '-c',
+        metavar='configuration file',
+        dest='config_file',
+        default='kim.toml',
+    )
+
+    command_parsers = parser.add_subparsers(title='command', dest='command', metavar='command', required=True)
+
+    ping_parser = command_parsers.add_parser('ping', help='check API availability')
+    ping_parser.set_defaults(command_func=ping)
+
+    return parser
+
 @dataclass
 class Configuration:
     """Runtime configuration options for 'kim'."""
@@ -30,26 +51,9 @@ def ping(args, config):
     response = requests.get(url, headers=headers)
     json = response.json()
     print(f'response body JSON is {json}')
-    
+
 def run():
-    parser = argparse.ArgumentParser(
-      prog="kimai API client",
-      description="makes API calls to the Kimai API",
-    )
-
-    parser.add_argument(
-        '--config',
-        '-c',
-        metavar='configuration file',
-        dest='config_file',
-        default='kim.toml',
-    )
-
-    command_parsers = parser.add_subparsers(title='command', dest='command', metavar='command', required=True)
-
-    ping_parser = command_parsers.add_parser('ping', help='check API availability')
-    ping_parser.set_defaults(command_func=ping)
-
+    parser = create_parser()
     args = parser.parse_args()
     config = read_config(args.config_file)
     args.command_func(args, config)
