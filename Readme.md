@@ -2,7 +2,7 @@
 
 ## Requirements and Installation
 
-At the moment, this project is not ready for a stable release and requires Python 3.x and [pipenv](https://pipenv.pypa.io/en/latest/) to run. Install pipenv with:
+At the moment, this project is not ready for a stable release and requires Python 3.11 (due to _tomllib_) and [pipenv](https://pipenv.pypa.io/en/latest/) to run. Install pipenv with:
 
 ```sh
 pip install --user pipenv
