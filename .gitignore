@@ -1,2 +1,11 @@
 # try to avoid committing possibly sensitive secrets from runtime configuration
 kim.toml
+
+# setuptools artifacts
+build/
+dist/
+*.egg-info/
+__pycache__
+
+# venv artifacts
+venv/

@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 requests = "*"
+kim = {editable = true, path = "."}
 
 [dev-packages]
 

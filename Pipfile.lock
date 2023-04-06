@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "ff88c6939e3090788e917cfdecf1af872168b83c8803457853061495493b5a71"
+            "sha256": "bb1684f57e60230ef83b1943966c22fde187621aa59724db02cd7bc929338f3c"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -112,6 +112,10 @@
             ],
             "markers": "python_version >= '3.5'",
             "version": "==3.4"
+        },
+        "kim": {
+            "editable": true,
+            "path": "."
         },
         "requests": {
             "hashes": [
